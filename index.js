@@ -102,13 +102,7 @@ class Logger {
      */
     debug = async(msg, log = false) => {
         console.log(colors.white("[DEBUG] ") + msg);
-        if (log) {
-            await this.writeLogFile({
-                message: msg,
-                type: "debug",
-                timeStamp: new Date().toLocaleString()
-            });
-        }
+        if (log) await this.log(msg, "debug");
     }
 
     /**
@@ -118,13 +112,7 @@ class Logger {
      */
     info = async(msg, log = true) => {
         console.log(colors.magenta(msg));
-        if (log) {
-            await this.writeLogFile({
-                message: msg,
-                type: "info",
-                timeStamp: new Date().toLocaleString()
-            });
-        }
+        if (log) await this.log(msg, "info");
     }
 
     /**
@@ -134,13 +122,7 @@ class Logger {
      */
     success = async(msg, log = true) => {
         console.log(colors.green(msg));
-        if (log) {
-            await this.writeLogFile({
-                message: msg,
-                type: "success",
-                timeStamp: new Date().toLocaleString()
-            });
-        }
+        if (log) await this.log(msg, "success");
     }
 
     /**
@@ -150,13 +132,7 @@ class Logger {
      */
     warning = async(msg, log = true) => {
         console.log(colors.yellow(msg));
-        if (log) {
-            await this.writeLogFile({
-                message: msg,
-                type: "warning",
-                timeStamp: new Date().toLocaleString()
-            });
-        }
+        if (log) await this.log(msg, "warning");
     }
 
     /**
@@ -167,13 +143,31 @@ class Logger {
      */
     error = async(msg, log = true) => {
         console.log(colors.red(msg));
-        if (log) {
-            await this.writeLogFile({
-                message: msg,
-                type: "error",
-                timeStamp: new Date().toLocaleString()
-            });
-        }
+        if (log) await this.log(msg, "error");
+    }
+
+    /**
+     * Prints a message to the console.
+     * @param msg - the message to print
+     * @param [log=true] - whether to log the message to the console log
+     */
+    print = async(msg, log = true) => {
+        console.log(msg);
+        if (log) await this.log(msg, "print");
+    }
+
+    /**
+     * Logs a message to the console and to a log file.
+     * @param msg - the message to log
+     * @param [type="log"] - the type of log message
+     * @param [timeStamp=new Date().toLocaleString()] - the time stamp of the log message
+     */
+    log = async(msg, type = "log") => {
+        await this.writeLogFile({
+            message: msg,
+            type: "log",
+            timeStamp: new Date().toLocaleString()
+        });
     }
 }
 
