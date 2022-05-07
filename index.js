@@ -1,3 +1,7 @@
+/*----------------------------------*/
+/* Copyright 2022 Gregor Katzschner */
+/*----------------------------------*/
+
 const colors = require('colors');
 const FileHandler = require('file-utils.js');
 const fs = require('fs');

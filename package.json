@@ -1,6 +1,6 @@
 {
     "name": "log-utils.js",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "logger for node JS",
     "main": "index.js",
     "type:": "module",
