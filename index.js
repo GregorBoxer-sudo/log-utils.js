@@ -165,7 +165,7 @@ class Logger {
     log = async(msg, type = "log") => {
         await this.writeLogFile({
             message: msg,
-            type: "log",
+            type: type,
             timeStamp: new Date().toLocaleString()
         });
     }
